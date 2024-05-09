@@ -6,22 +6,75 @@ describe('Home Page', () => {
 
         it('Validate HOME menu selected', () => {
             cy.visit('/')
-            cy.get('').should('be.visible')
+            //background collor: #00A1CB
+            cy.get('.nav-pills > :nth-child(1) > .active')
+                .should('be.visible')
+                .should('have.css', 'background-color')
+                .and('eq', 'rgb(0, 161, 203)')
 
         })
-        it('Validate Car empty', () => {
+        it('Validate Cart empty', () => {
             cy.visit('/')
-            cy.get('').should('be.visible')
+
+            cy.get('.block_7 > .nav > .dropdown > .dropdown-toggle > .cart_total')
+                .should('be.visible')
+                .should('have.text', '$0.00')
 
         })
         it('Validate Currency Options', () => {
             cy.visit('/')
-            cy.get('').should('be.visible')
+
+            //USD should be default
+            //3 options: USD, EUR, PE
+            const expectedCurrencies = ['€ Euro', '£ Pound Sterling', '$ US Dollar']
+
+            cy.get('.block_6 > .nav > .dropdown')
+                .should('be.visible')
+
+            cy.get('.block_6 > .nav > .dropdown > .dropdown-toggle')
+                .should('have.text', '$ US Dollar')
+
+            cy.get('.block_6 > .nav > .dropdown > .dropdown-menu')
+                .find('li').should('have.length', 3)
+                .each(($li, index) => {
+                    const expectedCurrency = expectedCurrencies[index]
+                    cy.wrap($li).should('contain.text', expectedCurrency)
+                })
 
         })
-        it('Validate all Menu Options redirection', () => {
+        it.only('Validate all Menu Options redirection', () => {
             cy.visit('/')
-            cy.get('').should('be.visible')
+            /*Each menu:
+            cy.get('.nav-pills  > :nth-child(2)') ----> Apparel and accessories / url final: 68
+            cy.get('.nav-pills > :nth-child(3)') ----> Makeup                   / url final: 36
+            cy.get('.nav-pills > :nth-child(4)') ----> Skincare                 / url final: 43
+            cy.get('.nav-pills > :nth-child(5)') ----> Fragrance                / url final: 49
+            cy.get('.nav-pills > :nth-child(6)') ----> Men                      / url final: 58
+            cy.get('.nav-pills > :nth-child(7)') ----> Hair care                / url final: 52
+            cy.get('.nav-pills > :nth-child(8)') ----> Books                    / url final: 65
+            */
+
+            const menuTitles = ['Home', 'Apparel & accessories', 'Makeup', 'Skincare', 'Fragrance', 'Men', 'Hair Care', 'Books']
+
+            cy.get('.nav-pills > li')
+                .should('be.visible')
+                .should('have.length', 8)
+                .each(($li, index) => {
+                    const menuTitle = menuTitles[index]
+                    cy.wrap($li).should('contain.text', menuTitle)
+                })
+
+            //Validate if when clicked, It'll redirect to the correct page
+            const urlNumbers = ['68', '36', '43', '49', '58', '52', '65']
+            const urlWithoutNumber = 'https://automationteststore.com/index.php?rt=product/category&path='        
+
+            /*cy.get('.nav-pills > li')
+                .each(($li, index) => {
+                    if (index >= 1) {
+                        const urlNumber = urlNumbers[index -1]
+                        cy.wrap($li).should('have.attr', 'href').and('eq', `${urlWithoutNumber}${urlNumber}`)
+                    }
+                })*/
 
         })
         it('Validate 3 slides', () => {
@@ -47,5 +100,5 @@ describe('Home Page', () => {
 
     })
 
-//Validate background color
+    //Validate background color
 })   
