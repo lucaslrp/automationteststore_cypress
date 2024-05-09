@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/lucaslrp/automationteststore_cypress#readme",
   "devDependencies": {
-    "cypress": "^13.8.1"
+    "cypress": "^13.9.0"
   }
 }

@@ -1,0 +1,30 @@
+|TOP part
+
+1. 'HOME' option selected on menu
+2. empty cart 
+3. currency options
+4. Click each item on menu and check if goes to the correct page
+5. Check if it has 3 slides
+6. Validate red message under the slide
+7. Validate social media icons
+8. validate Search feature
+
+Product part at Home Page
+
+1. Check if has the options View e Write Review when cursor is on the item
+2. Add to cart
+3. Validate the areas: FEATURED, LATEST PRODUCTS, BESTSELLERS, SPECIALS and their description
+4. Validate if the SPECIAL ones has the "Sale" icon
+5. Check out of stock message
+6. Validate the price change when it has discount
+
+Brands List
+
+1. Check if gos to the brand part when click on it
+
+Bottom part
+
+1. Check ABOUT US, CONTACT US, TESTIMONIALS and NEWSLETTER SIGNUP
+2. Check if TESTIMOIALS has 4
+3. Check if the Subcribe button works
+
