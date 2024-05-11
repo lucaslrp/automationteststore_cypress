@@ -2,13 +2,15 @@
 
 1. 'HOME' option selected on menu - ok
 2. empty cart - ok
-3. currency options - 
-4. Click each item on menu and check if goes to the correct page
-5. Check if it has 3 slides
-6. Validate red message under the slide
-7. Validate social media icons
-8. validate Search feature
-9. validate if clicking on store logo, It'll go to the Home Page
+3. currency options - ok 
+4. Click each item on menu and check if goes to the correct page - ok
+5. Check if it has 3 slides - ok 
+6. Validate red message under the slide - Ok
+7. Validate Promo Block - Ok
+8. Validate social media icons - 
+9. validate Search feature - 
+10. validate if clicking on store logo, It'll go to the Home Page - 
+
 Product part at Home Page
 
 1. Check if has the options View e Write Review when cursor is on the item
