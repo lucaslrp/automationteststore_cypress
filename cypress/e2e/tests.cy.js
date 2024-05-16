@@ -44,7 +44,7 @@ describe('Home Page', () => {
                 })
 
         })
-        
+
         it('Validate all Menu Options', () => {
             cy.visit('/')
             /*Each menu:
@@ -87,22 +87,22 @@ describe('Home Page', () => {
 
             //validating qtt of slides
             cy.get('.oneByOneSlide > #banner_slides > .oneByOne_item')
-            .should('have.length', 3)
-            
+                .should('have.length', 3)
+
             //validate arrow buttons
             //Previous Arrow click
             cy.get('.oneByOneSlide')
-            .trigger('mouseover')
+                .trigger('mouseover')
             cy.get('.prevArrow').should('be.visible')
-            .click()
-            .should('have.css', 'display')
-            .end('eq', 'block')
+                .click()
+                .should('have.css', 'display')
+                .end('eq', 'block')
             //Next Arrow click
             cy.get('.nextArrow')
-            .should('be.visible')
-            .click()
-            .should('have.css', 'display')
-            .end('eq', 'block')
+                .should('be.visible')
+                .click()
+                .should('have.css', 'display')
+                .end('eq', 'block')
 
         })
 
@@ -111,12 +111,12 @@ describe('Home Page', () => {
 
             //Color = #D13614 / in RGB = (209, 54, 20)
             cy.get('.welcome_msg')
-            .should('be.visible')
-            .and('contain.text', 'Welcome to the Automation Test Store! ')
+                .should('be.visible')
+                .and('contain.text', 'Welcome to the Automation Test Store! ')
 
             cy.get('.welcome_msg > h4')
-            .and('have.css', 'color')
-            .and('eq', 'rgb(209, 54, 20)')
+                .and('have.css', 'color')
+                .and('eq', 'rgb(209, 54, 20)')
 
         })
 
@@ -126,32 +126,75 @@ describe('Home Page', () => {
             const promoSectionTitles = ['Fast shipping', 'Easy Payments', 'Shipping Options', 'Large Variety']
             //Count Icons
             cy.get('.col-md-12 > .row > .row > .col-md-3')
-            .should('be.visible').should('have.length', 4)
+                .should('be.visible').should('have.length', 4)
             //Validate each title
-            cy.get('.col-md-12 > .row > .row > .col-md-3 > .promo_text > h2').each(($text, index)=>{
+            cy.get('.col-md-12 > .row > .row > .col-md-3 > .promo_text > h2').each(($text, index) => {
                 const promoSectionTitle = promoSectionTitles[index]
                 cy.wrap($text).should('contains.text', promoSectionTitle)
             })
-            
+
             /*each(($class, index)=>{
                 const promoSectionTitle = promoSectionTitles[index]
                 cy.wrap($class).should('have.class', 'promo_text').and('have.text', promoSectionTitle)
             })*/
         })
 
-       /* it('Validate Social Media Icons', () => {
+        it('Validate Social Media Icons', () => {
             cy.visit('/')
-            cy.get('').should('be.visible')
+
+            const socialMedias = ['Facebook', 'Twitter', 'Linkedin']
+            const socialMediaLinks = [
+                'http://www.facebook.com',
+                'https://twitter.com/',
+                'https://uk.linkedin.com/']
+
+            cy.get('.header_block > .social_icons')
+                .should('be.visible')
+                .find('a')
+                .should('have.length', 3)
+                .each(($a, index) => {
+                    const socialMedia = socialMedias[index]
+                    const socialMediaLink = socialMediaLinks[index]
+                    cy.wrap($a)
+                        .should('have.text', socialMedia)
+                        .and('have.attr', 'href', socialMediaLink)
+                })
+        })
+
+        it('Validate Search Keywords', () => {
+            cy.visit('/')
+
+            //Search bar
+            cy.get('input[placeholder="Search Keywords"]')
+                .should('be.visible')
+                .click()
+            cy.get('#search_form > .btn-group > .dropdown')
+                .should('be.visible').find('li')
+                .should('have.length', 10)
+
+            //Search Button
+            cy.get('input[placeholder="Search Keywords"]')
+                .type('test search button')
+            cy.get('.button-in-search')
+                .should('be.visible')
+                .click()
+            cy.get('#keyword')
+                .should('be.visible')
+                .and('have.value', 'test search button')
 
         })
 
-      //  it('Validate Search Keywords', () => {
+        it('Return to main page clicking on the Logo', () => {
             cy.visit('/')
-            cy.get('').should('be.visible')
 
-        })*/
+            cy.get('[href="https://automationteststore.com/index.php?rt=product/category&path=68"]')
+                .click()
+            cy.get('.logo')
+                .click()
+            cy.url()
+                .should('eq', 'https://automationteststore.com/')
+        })
 
     })
 
-    //Validate background color
 })   

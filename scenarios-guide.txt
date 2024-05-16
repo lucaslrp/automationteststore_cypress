@@ -7,8 +7,8 @@
 5. Check if it has 3 slides - ok 
 6. Validate red message under the slide - Ok
 7. Validate Promo Block - Ok
-8. Validate social media icons - 
-9. validate Search feature - 
+8. Validate social media icons - Ok
+9. validate Search feature - Ok
 10. validate if clicking on store logo, It'll go to the Home Page - 
 
 Product part at Home Page
