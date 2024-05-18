@@ -9,13 +9,13 @@
 7. Validate Promo Block - Ok
 8. Validate social media icons - Ok
 9. validate Search feature - Ok
-10. validate if clicking on store logo, It'll go to the Home Page - 
+10. validate if clicking on store logo, It'll go to the Home Page - Ok
 
 Product part at Home Page
 
-1. Check if has the options View e Write Review when cursor is on the item
-2. Add to cart
-3. Validate the areas: FEATURED, LATEST PRODUCTS, BESTSELLERS, SPECIALS and their description
+1. Validate the areas: FEATURED, LATEST PRODUCTS, BESTSELLERS, SPECIALS and their description - Ok
+2. Check if has the options View e Write Review when cursor is on the item - Ok
+3. Add to cart
 4. Validate if the SPECIAL ones has the "Sale" icon
 5. Check out of stock message
 6. Validate the price change when it has discount

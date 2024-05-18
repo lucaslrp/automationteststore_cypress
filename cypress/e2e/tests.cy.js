@@ -197,4 +197,98 @@ describe('Home Page', () => {
 
     })
 
+    context('Home Page - Product part', () => {
+
+        it('Validate product areas', () => {
+            cy.visit('/')
+            //Featured
+            cy.get('#featured')
+                .should('be.visible')
+                .find('.container-fluid > .block_frame > .heading1')
+                .find('span')
+                .should('have.length', 2)
+                .invoke('text')
+                .should('contain', 'Featured')
+                .and('contain', 'See Our Most featured Products')
+
+            //Latest Products
+            cy.get('#latest')
+                .should('be.visible')
+                .find('.container-fluid > .block_frame > .heading1')
+                .find('span')
+                .should('have.length', 2)
+                .invoke('text')
+                .should('contain', 'Latest Products')
+                .and('contain', 'See New Products')
+
+            //Best Sellers
+            cy.get('#bestseller')
+                .should('be.visible')
+                .find('.container-fluid > .block_frame > .heading1')
+                .find('span')
+                .should('have.length', 2)
+                .invoke('text')
+                .should('contain', 'Bestsellers')
+                .and('contain', 'See Best Selling Products')
+
+            //Specials
+            cy.get('#special')
+                .should('be.visible')
+                .find('.container-fluid > .block_frame > .heading1')
+                .find('span')
+                .should('have.length', 2)
+                .invoke('text')
+                .should('contain', 'Specials')
+                .and('contain', 'See Products On Sale')
+        })
+
+        it('View and Write Review', () => {
+            cy.visit('/')
+
+            cy.get('#featured > .container-fluid > .block_frame > .thumbnails > .col-md-3 > .thumbnail')
+                .should('be.visible')
+                .and('have.length', 4)
+                .each(($thumbnail, index) => {
+                    cy.wrap($thumbnail)
+                        .trigger('mouseover')
+                        .find('.shortlinks')
+                        .should('have.css', 'display', 'block')
+                        .find('a')
+                        .invoke('text')
+                        .should('contain', 'View')
+                        .and('contain', 'Write Review')
+                })
+
+
+            cy.get('#featured > .container-fluid > .block_frame > .thumbnails > .col-md-3 > .thumbnail')
+                .first()
+                .as('firstThumb')
+                .trigger('mouseover')
+                .find('.shortlinks')
+                .should('have.css', 'display', 'block')
+                .within(() => {
+                    cy.get('a')
+                        .eq(0)
+                        .should('have.text', 'View')
+                        .click()
+                })
+            cy.url()
+                .should('contain', 'https://automationteststore.com/index.php?rt=product/product&product_id')
+            cy.go('back')
+            cy.get('@firstThumb')
+                .trigger('mouseover')
+                .within(() => {
+
+                    cy.get('a')
+                        .eq(2)
+                        .should('have.text', 'Write Review')
+                        .click()
+                })
+            cy.url()
+                .should('contain', 'https://automationteststore.com/index.php?rt=product/product&product_id')
+                .and('contain', '#review')
+        })
+
+    })
+
 })   
